@@ -1,0 +1,7 @@
+\begin{tabular}{cc||c||ccccc|ccccc}
+Dataset&wine&D&\multicolumn{5}{c}{Univarié}&\multicolumn{5}{c}{Multivarié}\\ \hline
+Train size &142&&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count\\\cline{4-11}
+Test size&36&2&11.0&0.0&5/2&6161&3705&0.5&0.0&0/2&0&3482\\
+Features count&13&3&30.0&4.4&6/4&5559&8265&1.7&0.0&0/1&0&7746\\
+Time limit &30&4&30.0&6.0&8/3&5104&17385&4.3&0.0&0/3&0&16274\\
+\end{tabular}

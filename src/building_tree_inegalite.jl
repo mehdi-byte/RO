@@ -9,10 +9,11 @@ Entrées :
 - D : Nombre maximal de séparations d'une branche (profondeur de l'arbre - 1)
 - multivariate (optionnel): vrai si les séparations sont multivariées; faux si elles sont univariées (faux par défaut)
 - mu (optionnel, utilisé en multivarié): distance minimale à gauche d'une séparation où aucune donnée ne peut se trouver (i.e., pour la séparation ax <= b, il n'y aura aucune donnée dans ]b - ax - mu, b - ax[) (10^-4 par défaut)
-- time_limits (optionnel) : temps maximal de résolution (-1 si le temps n'est pas limité) (-1 par défaut)
+- time_limits (optionnel) : temps maximal de résolution (-1 si le temps n'est pas l
+.imité) (-1 par défaut)
 - classes : labels des classes figurant dans le dataset
 """
-function build_tree(x::Matrix{Float64}, y::Vector{Any}, D::Int64, classes; multivariate::Bool=false, time_limit::Int64 = -1, mu::Float64=10^(-4))
+function build_tree_inegalite(x::Matrix{Float64}, y::Vector{Any}, D::Int64, classes; multivariate::Bool=false, time_limit::Int64 = -1, mu::Float64=10^(-4))
     
     dataCount = length(y) # Nombre de données d'entraînement
     featuresCount = length(x[1, :]) # Nombre de caractéristiques
@@ -100,6 +101,38 @@ function build_tree(x::Matrix{Float64}, y::Vector{Any}, D::Int64, classes; multi
         @constraint(m, [i in 1:dataCount, t in 1:sepCount], u_at[i, t*2] <= sum(a[j, t] for j in 1:featuresCount)) # contrainte de capacité empechant les données de passer dans le fils gauche d'un noeud n'appliquant pas de règle de branchement
     end
 
+        ########################### Inegalités valides ###############################################
+
+
+    anc = Dict(1 => [], 2 => [1], 3 => [1], 4 => [2], 5 => [2], 6 => [3], 7 => [3], 8 => [4, 2, 1], 9 => [4, 2, 1], 10 => [5, 2, 1], 11 => [5, 2, 1], 12 => [6, 3, 1], 13 => [6, 3, 1], 14 => [7, 3, 1], 15 => [7, 3, 1], 16 => [8, 4, 2, 1], 17 => [8, 4, 2, 1], 18 => [9, 4, 2, 1], 19 => [9, 4, 2, 1], 20 => [10, 5, 2, 1], 21 => [10, 5, 2, 1], 22 => [11, 5, 2, 1], 23 => [11, 5, 2, 1], 24 => [12, 6, 3, 1],25 => [12, 6, 3, 1], 26 => [13, 6, 3, 1], 27 => [13, 6, 3, 1], 28 => [14, 7, 3, 1], 29 => [14, 7, 3, 1], 30 => [15, 7, 3, 1], 31 => [15, 7, 3, 1] ) # Dictionary of ancestors
+    if !multivariate 
+        @constraint(m, [t in 1:sepCount], sum(a[j,t] for j in 1:featuresCount) + sum(c[k,t_a] for k in 1:classCount for t_a in union([t], anc[t])) == 1) ####Inegalité 2 
+    end
+
+    for k in 1:classCount
+        for i in 1:dataCount
+            if y[i]!=k
+                @constraint(m,[t in 1:sepCount], c[k,t]+u_tw[i,t]+u_tw[i,2*t]+u_tw[i,2*t+1]<=1) ## Inegalité 1
+            end
+        end
+    end
+    if multivariate
+        for i1 in 1:dataCount
+            for i2 in 1:dataCount
+                for t in 1:sepCount
+                    h=0
+                    for j in 1:featuresCount
+                        if x[i1,j]<=x[i2,j]
+                            h+=a[j,t]
+                        end
+                    end
+                    @constraint(m,2*sum(c[k,t] for k in 1:classCount)+u_at[i1,2*t+1]+u_at[i2,2*t]+h<=2)##Inegalité 3 
+                end
+            end
+        end
+    end
+    
+
     ## Déclaration de l'objectif
     if multivariate
         @objective(m, Max,  sum(u_at[i, 1] for i in 1:dataCount))
@@ -108,7 +141,7 @@ function build_tree(x::Matrix{Float64}, y::Vector{Any}, D::Int64, classes; multi
     end
 
     classif = @expression(m, sum(u_at[i, 1] for i in 1:dataCount))
-
+    nb_cons=length(all_constraints(m; include_variable_in_set_constraints = false))
     starting_time = time()
     optimize!(m)
     resolution_time = time() - starting_time
@@ -150,7 +183,7 @@ function build_tree(x::Matrix{Float64}, y::Vector{Any}, D::Int64, classes; multi
         end
     end   
 
-    return T, objective_value(m), resolution_time, gap
+    return T, objective_value(m), resolution_time, gap,node_count(m),nb_cons
 end
 
 """
@@ -165,7 +198,7 @@ Entrées :
 - mu (optionnel, utilisé en multivarié): distance minimale à gauche d'une séparation où aucune donnée ne peut se trouver (i.e., pour la séparation ax <= b, il n'y aura aucune donnée dans ]b - ax - mu, b - ax[) (10^-4 par défaut)
 - time_limits (optionnel) : temps maximal de résolution (-1 si le temps n'est pas limité) (-1 par défaut)
 """
-function build_tree(clusters::Vector{Cluster}, D::Int64, classes;multivariate::Bool=false, time_limit::Int64 = -1, mu::Float64=10^(-4))
+function build_tree_inegalite(clusters::Vector{Cluster}, D::Int64, classes;multivariate::Bool=false, time_limit::Int64 = -1, mu::Float64=10^(-4))
     
     clusterCount = length(clusters) # Nombre de données d'entraînement
     featuresCount = length(clusters[1].lBounds) # Nombre de caractéristiques
@@ -258,13 +291,50 @@ function build_tree(clusters::Vector{Cluster}, D::Int64, classes;multivariate::B
         @constraint(m, [i in 1:clusterCount, t in 1:sepCount], u_at[i, t*2+1] <= sum(a[j, t] for j in 1:featuresCount)) # contrainte de capacité empechant les données de passer dans le fils droit d'un noeud n'appliquant pas de règle de branchement
     end
 
+    ########################### Inegalités valides ###############################################
+    # Dictionary of ancestors
+    anc = Dict(
+        1 => [],
+        2 => [1], 3 => [1],
+        4 => [2], 5 => [2],
+        6 => [3], 7 => [3],
+        8 => [4, 2, 1], 9 => [4, 2, 1],
+        10 => [5, 2, 1], 11 => [5, 2, 1],
+        12 => [6, 3, 1], 13 => [6, 3, 1],
+        14 => [7, 3, 1], 15 => [7, 3, 1],
+        16 => [8, 4, 2, 1], 17 => [8, 4, 2, 1],
+        18 => [9, 4, 2, 1], 19 => [9, 4, 2, 1],
+        20 => [10, 5, 2, 1], 21 => [10, 5, 2, 1],
+        22 => [11, 5, 2, 1], 23 => [11, 5, 2, 1],
+        24 => [12, 6, 3, 1], 25 => [12, 6, 3, 1],
+        26 => [13, 6, 3, 1], 27 => [13, 6, 3, 1],
+        28 => [14, 7, 3, 1], 29 => [14, 7, 3, 1],
+        30 => [15, 7, 3, 1], 31 => [15, 7, 3, 1]
+    )
+
+    # Constraint 1
+    @constraint(m, [t in 1:sepCount], 
+        sum(a[j, t] for j in 1:featuresCount) + 
+        sum(c[k, t_a] for k in 1:classCount for t_a in union([t], anc[t])) == 1
+    )
+
+    # Constraint 2
+    for k in 1:classCount
+        for i in 1:clusterCount
+            if clusters[i].class != k
+                @constraint(m, [t in 1:sepCount], 
+                    c[k, t] + u_tw[i, t] + u_tw[i, 2*t] + u_tw[i, 2*t + 1] <= 1
+                )
+            end
+        end
+    end
     ## Déclaration de l'objectif
     if multivariate
         @objective(m, Max, sum(length(clusters[i].dataIds) * u_at[i, 1] for i in 1:clusterCount))
     else
         @objective(m, Max, sum(length(clusters[i].dataIds) * u_at[i, 1] for i in 1:clusterCount))
     end
-
+    nb_cons=length(all_constraints(m; include_variable_in_set_constraints = false))
     starting_time = time()
     optimize!(m)
     resolution_time = time() - starting_time
@@ -306,6 +376,6 @@ function build_tree(clusters::Vector{Cluster}, D::Int64, classes;multivariate::B
         end
     end   
 
-    return T, objective_value(m), resolution_time, gap
+    return T, objective_value(m), resolution_time, gap,node_count(m),nb_cons
 end
 
