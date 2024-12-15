@@ -23,7 +23,8 @@ Le coeur de notre investigation réside dans l’application des fonctions main(
 et main-merge(), conçues pour traiter respectivement les données sans et avec
 regroupement préalable, en fonction de différents paramètres de profondeur d’arbre
 (D ∈ {2, 3, 4}).
-À travers ce rapport, nous ambitionnons de présenter une analyse complète des
+
+À travers ce projet, nous ambitionnons de présenter une analyse complète des
 résultats obtenus en mettant l’accent sur les temps de calcul et la performance
 des classifieurs en fonction des jeux de données, de la profondeur des arbres, du
 type de séparations et de la stratégie de regroupement utilisée. Nous abordons
