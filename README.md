@@ -5,11 +5,12 @@ Zacharie Ales pour l’année universitaire 2022-2023, se concentre sur l’appl
 de la modélisation F à divers jeux de données pour générer des arbres de décision
 optimaux. Cette approche est explorée à travers l’utilisation de séparations univariées et multivariées ainsi que des méthodes de regroupement des données, à la fois
 naïves et exactes, présentées au cours.
-Le projet exploite trois jeux de données initiaux — Iris, Wine, et Seeds —
+Le projet exploite trois jeux de données initiaux  Iris, Wine, et Seeds 
 comme plateforme de test pour évaluer l’efficacité de notre modélisation. En outre,
 il se propose d’étendre cette exploration à deux autres ensembles de données de
 notre choix, afin de valider la robustesse et l’adaptabilité de nos méthodes. Nous
 avons choisi de travailler avec ces deux jeux de données :
+
 — Mushroom : Ce jeu de données comprend des descriptions d’échantillons
 hypothétiques correspondant à 23 espèces de champignons à lamelles de la
 famille Agaricus et Lepiota. Chaque espèce est identifiée comme définitivement comestible, définitivement toxique, ou d’édibilité inconnue et non
