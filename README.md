@@ -15,6 +15,7 @@ avons choisi de travailler avec ces deux jeux de données :
 hypothétiques correspondant à 23 espèces de champignons à lamelles de la
 famille Agaricus et Lepiota. Chaque espèce est identifiée comme définitivement comestible, définitivement toxique, ou d’édibilité inconnue et non
 recommandée. Cette dernière classe a été combinée avec la classe toxique.
+
 — Dry_bean_seeds : Ce jeu de données correspond a la classification de sept
 types d’haricots a partir de plusieurs caracteristiques y compris 12 dimensions
 et 4 formes.
