@@ -1,0 +1,7 @@
+\begin{tabular}{cc||c||ccccc|ccccc}
+Dataset&mushroom&D&\multicolumn{5}{c}{Univarié}&\multicolumn{5}{c}{Multivarié}\\ \hline
+Train size &120&&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count\\\cline{4-13}
+Test size&30&2&73.9&0.0&6/1&14783&3133&0.7&0.0&0/2&0&3066\\
+Features count&19&3&64.9&0.0&0/0&6057&6989&0.4&0.0&0/2&0&6834\\
+Time limit &1000&4&122.7&0.0&0/2&8675&14701&0.6&0.0&0/2&0&14370\\
+\end{tabular}

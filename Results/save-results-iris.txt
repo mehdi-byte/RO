@@ -1,0 +1,7 @@
+\begin{tabular}{cc||c||ccccc|ccccc}
+Dataset&iris&D&\multicolumn{5}{c}{Univarié}&\multicolumn{5}{c}{Multivarié}\\ \hline
+Train size &120&&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count\\\cline{4-13}
+Test size&30&2&7.6&0.0&5/1&2382&3133&2.4&0.0&1/3&921&2841\\
+Features count&4&3&41.1&0.0&0/4&7351&6989&3.5&0.0&0/2&70&6309\\
+Time limit &1000&4&56.7&0.0&0/1&7251&14701&6.8&0.0&0/0&151&13245\\
+\end{tabular}

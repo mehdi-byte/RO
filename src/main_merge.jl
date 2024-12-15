@@ -4,7 +4,7 @@ include("merge.jl")
 include("read_data.jl")
 
 function main_merge(inegalite=false,save=true)
-    for dataSetName in ["iris","seeds","wine"]
+    for dataSetName in ["iris", "seeds", "wine","dry_bean","mushroom"]
     #for dataSetName in ["iris"]
         if inegalite &&save
             res=open("..//results-merge-inegalites-"*dataSetName*".txt","w")

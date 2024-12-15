@@ -328,6 +328,7 @@ function build_tree_inegalite(clusters::Vector{Cluster}, D::Int64, classes;multi
             end
         end
     end
+    
     ## Déclaration de l'objectif
     if multivariate
         @objective(m, Max, sum(length(clusters[i].dataIds) * u_at[i, 1] for i in 1:clusterCount))

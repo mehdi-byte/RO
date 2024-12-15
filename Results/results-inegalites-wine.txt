@@ -1,0 +1,13 @@
+ (train size 142, test size 36, 13, features count: 13, time limit: 1000, Avec inégalités valides)
+  D = 2
+14.9s	gap 0.0%	/2	node count 7351	 constraint number 4560
+1.5s	gap 0.0%	Erreurs train/test 0/2	
+node count 0	 constraint number 4337
+  D = 3
+44.7s	gap 0.0%	/3	node count 7650	 constraint number 10260
+3.0s	gap 0.0%	Erreurs train/test 0/1	
+node count 0	 constraint number 9741
+  D = 4
+23.4s	gap 0.0%	/3	node count 1728	 constraint number 21660
+9.9s	gap 0.0%	Erreurs train/test 0/3	
+node count 1724	 constraint number 20549

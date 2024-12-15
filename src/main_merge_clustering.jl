@@ -1,10 +1,11 @@
 include("building_tree_.jl")
 include("utilities.jl")
 include("merge.jl")
+include("read_data.jl")
 using Distances, StatsBase
 
 function main_merge_sC(inegalite=false,save=true)
-    for dataSetName in ["iris"]
+    for dataSetName in ["iris", "seeds", "wine","dry_bean","mushroom"]
         #result_path = "..//results"
         #file_name= "results_main_merge_spectral_clustering-"*dataSetName*".txt"
         #res=open(joinpath(result_path,file_name),"w")
@@ -23,10 +24,8 @@ function main_merge_sC(inegalite=false,save=true)
         print("=== Dataset ", dataSetName)
         println(res,"=== Dataset ", dataSetName)  
 
-        
-        include("../data/" * dataSetName * ".txt")
-        
-        
+        # Préparation des données
+        read_data(dataSetName,150)
         # Ramener chaque caractéristique sur [0, 1]
         reducedX = Matrix{Float64}(X)
         for j in 1:size(X, 2)

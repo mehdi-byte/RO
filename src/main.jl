@@ -43,8 +43,7 @@ function main(inegalite::Bool=false,save::Bool=true)
         println(" (train size ", size(X_train, 1), ", test size ", size(X_test, 1), ", ", size(X_train, 2), ", features count: ", size(X_train, 2), ")")
         
         # Temps limite de la méthode de résolution en secondes
-        println("Attention : le temps est fixé à 30s pour permettre de faire des tests rapides. N'hésitez pas à l'augmenter lors du calcul des résultats finaux que vous intégrerez à votre rapport.")
-        time_limit = 30
+        time_limit = 1000
         if inegalite 
             ch=", Avec inégalités valides"
         else 
@@ -53,7 +52,7 @@ function main(inegalite::Bool=false,save::Bool=true)
         println(" (train size ", size(X_train, 1), ", test size ", size(X_test, 1), ", ", size(X_train, 2), ", features count: ", size(X_train, 2),", time limit: ", time_limit,ch, ")")
         println(res," (train size ", size(X_train, 1), ", test size ", size(X_test, 1), ", ", size(X_train, 2), ", features count: ", size(X_train, 2),", time limit: ", time_limit,ch, ")")
         if save 
-            println(res_save,"Train size &",size(X_train, 1),"&&Solve time& Gap(\\%)& Errors train/test&Node count&Constraint count&Solve time& Gap(\\%)& Errors train/test&Node count&Constraint count\\\\\\cline{4-11}")
+            println(res_save,"Train size &",size(X_train, 1),"&&Solve time& Gap(\\%)& Errors train/test&Node count&Constraint count&Solve time& Gap(\\%)& Errors train/test&Node count&Constraint count\\\\\\cline{4-13}")
         end
         
         results=["Test size&"*string(size(X_test, 1))*"&","Features count&"*string(size(X_train, 2))*"&","Time limit &"*string(time_limit)*"&"]

@@ -1,7 +1,0 @@
-\begin{tabular}{cc||c||ccccc|ccccc}
-Dataset&seeds&D&\multicolumn{5}{c}{Univarié}&\multicolumn{5}{c}{Multivarié}\\ \hline
-Train size &168&&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count\\\cline{4-11}
-Test size&42&2&11.7&0.0&10/3&9550&5392&5.0&0.0&4/4&5875&4986\\
-Features count&6&3&30.0&3.7&6/2&5150&12132&23.3&0.0&0/3&15200&11186\\
-Time limit &30&4&30.2&1.8&3/4&3617&25612&30.1&0.6&1/3&8379&23586\\
-\end{tabular}

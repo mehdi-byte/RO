@@ -1,0 +1,7 @@
+\begin{tabular}{cc||c||ccccc|ccccc}
+Dataset&dry_bean&D&\multicolumn{5}{c}{Univarié}&\multicolumn{5}{c}{Multivarié}\\ \hline
+Train size &117&&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count&Solve time& Gap(\%)& Errors train/test&Node count&Constraint count\\\cline{4-13}
+Test size&30&2&4.7&0.0&49/14&2412&5164&0.4&0.0&46/18&0&5061\\
+Features count&16&3&1001.7&6.0&12/2&487795&11736&1.7&0.0&0/1&171&11497\\
+Time limit &1000&4&1000.1&0.9&1/6&207479&24880&5.6&0.0&0/3&977&24369\\
+\end{tabular}
