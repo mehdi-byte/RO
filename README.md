@@ -30,4 +30,4 @@ but d’améliorer soit les temps de calcul, soit la précision des prédictions
 approches permettant d’affiner la formulation F.
 Cette exploration se veut non seulement un exercice académique pour approfondir notre compréhension des arbres de décision optimaux mais aussi une
 contribution modeste à la vaste quête d’efficacité dans le domaine de l’apprentissage
-automatiq
+automatiques.
