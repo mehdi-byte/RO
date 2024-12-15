@@ -1,0 +1,118 @@
+=== Dataset seeds
+ (train size 168, test size 42, 6, features count: 6)
+	k = 1
+		Univarié
+			sigma		# clusters	Gap
+			 0.069%		1 clusters	0.0%	Erreurs train/test : 112/28		1.0s
+			 0.757%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 1.445%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 2.132%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 2.82%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 3.508%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 4.195%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 4.883%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 5.571%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 6.258%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 6.946%		1 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+
+		Multivarié
+			sigma		# clusters	Gap
+			 0.069%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 0.757%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 1.445%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 2.132%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 2.82%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 3.508%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 4.195%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 4.883%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 5.571%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 6.258%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 6.946%		1 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+
+	k = 5
+		Univarié
+			sigma		# clusters	Gap
+			 0.069%		5 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 0.757%		5 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 1.445%		5 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 2.132%		5 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 2.82%		5 clusters	0.0%	Erreurs train/test : 117/31		0.2s
+			 3.508%		5 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 4.195%		5 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+			 4.883%		5 clusters	0.0%	Erreurs train/test : 112/28		0.1s
+			 5.571%		5 clusters	0.0%	Erreurs train/test : 112/28		0.1s
+			 6.258%		5 clusters	0.0%	Erreurs train/test : 112/28		0.0s
+			 6.946%		5 clusters	0.0%	Erreurs train/test : 112/28		0.2s
+
+		Multivarié
+			sigma		# clusters	Gap
+			 0.069%		5 clusters	0.0%	Erreurs train/test : 112/28		1.3s
+			 0.757%		5 clusters	0.0%	Erreurs train/test : 79/14		1.9s
+			 1.445%		5 clusters	0.0%	Erreurs train/test : 65/15		1.4s
+			 2.132%		5 clusters	0.0%	Erreurs train/test : 112/28		3.1s
+			 2.82%		5 clusters	0.0%	Erreurs train/test : 115/25		3.1s
+			 3.508%		5 clusters	0.0%	Erreurs train/test : 65/15		1.8s
+			 4.195%		5 clusters	0.0%	Erreurs train/test : 65/15		1.8s
+			 4.883%		5 clusters	0.0%	Erreurs train/test : 112/28		1.7s
+			 5.571%		5 clusters	0.0%	Erreurs train/test : 112/28		3.8s
+			 6.258%		5 clusters	0.0%	Erreurs train/test : 112/28		2.0s
+			 6.946%		5 clusters	0.0%	Erreurs train/test : 65/15		1.8s
+
+	k = 10
+		Univarié
+			sigma		# clusters	Gap
+			 0.069%		10 clusters	0.0%	Erreurs train/test : 112/28		0.8s
+			 0.757%		10 clusters	0.0%	Erreurs train/test : 112/28		2.4s
+			 1.445%		10 clusters	0.0%	Erreurs train/test : 54/18		1.8s
+			 2.132%		10 clusters	0.0%	Erreurs train/test : 115/30		1.6s
+			 2.82%		10 clusters	0.0%	Erreurs train/test : 69/16		1.7s
+			 3.508%		10 clusters	0.0%	Erreurs train/test : 116/31		1.5s
+			 4.195%		10 clusters	0.0%	Erreurs train/test : 112/28		1.7s
+			 4.883%		10 clusters	0.0%	Erreurs train/test : 99/19		2.2s
+			 5.571%		10 clusters	0.0%	Erreurs train/test : 112/28		1.9s
+			 6.258%		10 clusters	0.0%	Erreurs train/test : 117/29		1.6s
+			 6.946%		10 clusters	0.0%	Erreurs train/test : 44/8		1.6s
+
+		Multivarié
+			sigma		# clusters	Gap
+			 0.069%		10 clusters	0.0%	Erreurs train/test : 57/17		15.8s
+			 0.757%		10 clusters	0.0%	Erreurs train/test : 54/17		27.7s
+			 1.445%		10 clusters	0.0%	Erreurs train/test : 57/17		22.9s
+			 2.132%		10 clusters	0.0%	Erreurs train/test : 107/28		21.5s
+			 2.82%		10 clusters	0.0%	Erreurs train/test : 78/20		22.6s
+			 3.508%		10 clusters	0.0%	Erreurs train/test : 71/16		19.4s
+			 4.195%		10 clusters	0.0%	Erreurs train/test : 57/17		17.0s
+			 4.883%		10 clusters	0.0%	Erreurs train/test : 53/17		4.1s
+			 5.571%		10 clusters	0.0%	Erreurs train/test : 37/6		18.7s
+			 6.258%		10 clusters	0.0%	Erreurs train/test : 112/28		22.7s
+			 6.946%		10 clusters	0.0%	Erreurs train/test : 112/28		21.1s
+
+	k = 15
+		Univarié
+			sigma		# clusters	Gap
+			 0.069%		15 clusters	0.0%	Erreurs train/test : 112/28		1.0s
+			 0.757%		15 clusters	0.0%	Erreurs train/test : 98/24		5.0s
+			 1.445%		15 clusters	0.0%	Erreurs train/test : 64/21		4.7s
+			 2.132%		15 clusters	0.0%	Erreurs train/test : 117/29		4.5s
+			 2.82%		15 clusters	0.0%	Erreurs train/test : 114/29		3.9s
+			 3.508%		15 clusters	0.0%	Erreurs train/test : 112/28		4.6s
+			 4.195%		15 clusters	0.0%	Erreurs train/test : 53/18		3.8s
+			 4.883%		15 clusters	0.0%	Erreurs train/test : 114/29		4.6s
+			 5.571%		15 clusters	0.0%	Erreurs train/test : 112/28		4.0s
+			 6.258%		15 clusters	0.0%	Erreurs train/test : 112/29		3.4s
+			 6.946%		15 clusters	0.0%	Erreurs train/test : 98/25		4.1s
+
+		Multivarié
+			sigma		# clusters	Gap
+			 0.069%		15 clusters	0.0%	Erreurs train/test : 112/28		11.3s
+			 0.757%		15 clusters	0.0%	Erreurs train/test : 35/6		43.1s
+			 1.445%		15 clusters	0.0%	Erreurs train/test : 91/23		79.9s
+			 2.132%		15 clusters	0.0%	Erreurs train/test : 110/27		63.9s
+			 2.82%		15 clusters	0.0%	Erreurs train/test : 84/21		42.7s
+			 3.508%		15 clusters	0.0%	Erreurs train/test : 75/20		50.7s
+			 4.195%		15 clusters	0.0%	Erreurs train/test : 50/10		76.7s
+			 4.883%		15 clusters	0.0%	Erreurs train/test : 102/25		61.1s
+			 5.571%		15 clusters	0.0%	Erreurs train/test : 109/29		44.2s
+			 6.258%		15 clusters	0.0%	Erreurs train/test : 112/28		79.5s
+			 6.946%		15 clusters	0.0%	Erreurs train/test : 107/27		90.6s
+

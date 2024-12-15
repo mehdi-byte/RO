@@ -1,3 +1,6 @@
+using Clustering
+using LinearAlgebra
+using Distances
 include("struct/distance.jl")
 
 """
@@ -240,4 +243,88 @@ function merge!(c1::Cluster, c2::Cluster)
     c1.x = vcat(c1.x, c2.x)
     c1.lBounds = min.(c1.lBounds, c2.lBounds)
     c1.uBounds = max.(c1.uBounds, c2.uBounds)    
+end
+
+
+
+function kmeans_(data::Matrix, k::Int, maxiter::Int=100)
+    # Randomly initialize k centroids
+    #println("data    ", size(data))
+    centroids = data[shuffle(1:size(data, 1))[1:k], :]
+    #println("centroid   ", size(centroids))
+    # Initialize assignment vector with zeros
+    assignments = zeros(Int, size(data, 1))
+    #println("   assignments  ", size(assignments))
+    # Iterate until convergence or maximum number of iterations
+    for iter = 1:maxiter
+        # Assign data points to nearest centroid
+        for i = 1:size(data, 1)
+            dists = [norm(data[i, :] - centroids[j, :]) for j = 1:k]
+            assignments[i] = argmin(dists)
+        end
+
+        # Update centroids as mean of assigned data points
+        for j = 1:k
+            centroids[j, :] = mean(data[findall(assignments .== j), :], dims = 1)
+        end
+    end
+
+    return centroids, assignments
+end
+
+function spectralClustering(x::Matrix{Float64},y::Vector{Any}, k::Int, sigma::Float64)
+    # Construct adjacency matrix
+    n = size(x, 1)
+    A = zeros(n, n)
+    for i in 1:n
+        for j in i+1:n
+            dist = norm(x[i, :] - x[j, :])
+            A[i, j] = exp(-dist^2 / (2 * sigma^2))
+            A[j, i] = A[i, j]
+        end
+    end
+
+
+    
+    # Compute degree matrix
+    #D = diagm(sum(A, dims=2))
+    D = Diagonal(sum(A, dims=2)[:])
+    # Compute Laplacian matrix
+    L = D - A
+    
+    # Compute k smallest eigenvectors of Laplacian matrix
+    k_eig = eigvecs(L)[:, 1:k]
+    
+    # Normalize the rows
+    norm_k_eig = k_eig ./ sqrt.(sum(k_eig.^2, dims=2))
+    
+    # Cluster using KMeans
+    centroids, assignments = kmeans_(norm_k_eig, k)
+    
+    # Group data points into clusters
+    clusters = Vector{Cluster}([])
+    clusterId = collect(1:k)
+    for dataId in 1:k
+        push!(clusters, Cluster(dataId, x,y))
+    end
+
+    for (i, c) in enumerate(assignments)
+        #println("i,c   ",i,"   ",c)
+        #println(clusters[c])
+        push!(clusters[c].dataIds, i)
+    end
+    
+    
+    
+    # Compute cluster bounds
+    for c in clusters
+        if !isempty(c.dataIds)
+            c.x = x[c.dataIds, :]
+            c.lBounds = vec(minimum(c.x, dims=1))
+            c.uBounds = vec(maximum(c.x, dims=1))
+        end
+    end
+    
+    # Filter empty clusters
+    return filter(x -> length(x.dataIds) > 0, clusters)
 end

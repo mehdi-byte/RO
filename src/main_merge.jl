@@ -3,20 +3,9 @@ include("utilities.jl")
 include("merge.jl")
 include("read_data.jl")
 
-function main_merge(inegalite=false,save=true)
-    for dataSetName in ["iris","seeds","wine"]
-    #for dataSetName in ["iris"]
-        if inegalite &&save
-            res=open("..//results-merge-inegalites-"*dataSetName*".txt","w")
-            res_save=open("..//save-results-merge-inegalites-"*dataSetName*".txt","w")
-        elseif inegalite && !(save)
-            res=open("..//results-merge-inegalites-"*dataSetName*".txt","w")
-        elseif save && !inegalite 
-            res_save=open("..//save-results-merge-"*dataSetName*".txt","w")
-            res=open("..//results-merge-"*dataSetName*".txt","w")
-        else 
-            res=open("..//results-merge-"*dataSetName*".txt","w")
-        end
+function main_merge()
+    for dataSetName in ["iris", "seeds", "wine"]
+        
         print("=== Dataset ", dataSetName)
         println(res,"=== Dataset ", dataSetName)  
        # Préparation des données

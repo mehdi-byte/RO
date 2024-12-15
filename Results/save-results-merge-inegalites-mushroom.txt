@@ -1,0 +1,30 @@
+\begin{tabular}{cc||ccccc|ccccc}
+\hline
+\multicolumn{2}{|c|}{Dataset=mushroom}&\multicolumn{2}{|c|}{Train size=120}&\multicolumn{2}{|c|}{Test size=30}&\multicolumn{2}{|c|}{Feature count =19}&\multicolumn{2}{|c|}{Time limit =900}&\multicolumn{2}{|c|}{Inequalities =Activated}\\ \hline\hline
+D&2&\multicolumn{5}{c}{Univarié}&\multicolumn{5}{c}{Multivarié}\\\hline
+Gamma&Nb Clusters&Solve time&Gap(\%)&Train/test&Node count&Nb constraints&Solve time&Gap(\%)&Train/test&Node count& nb constraints\\
+0.0&2&0.0&0.0&59/16&0&68&0.1&0.0&59/16&0&1069\\
+0.2&24&0.3&0.0&5/0&0&640&0.2&0.0&0/3&0&1509\\
+0.4&48&1.4&0.0&5/0&593&1264&0.2&0.0&0/3&0&1989\\
+0.6&72&3.3&0.0&5/0&1540&1888&0.8&0.0&0/3&3137&2469\\
+0.8&96&6.4&0.0&5/0&3296&2512&0.6&0.0&0/1&1586&2949\\
+1.0&120&12.7&0.0&5/0&6128&3136&1.1&0.0&0/3&1629&3429\\
+\hline
+D&3&\multicolumn{5}{c}{Univarié}&\multicolumn{5}{c}{Multivarié}\\\hline
+Gamma&Nb Clusters&Solve time&Gap(\%)&Train/test&Node count&Nb constraints&Solve time&Gap(\%)&Train/test&Node count& nb constraints\\
+0.0&2&0.0&0.0&59/16&0&152&0.3&0.0&59/16&0&2489\\
+0.2&24&1.4&0.0&0/0&802&1428&0.6&0.0&0/0&0&3457\\
+0.4&48&5.3&0.0&0/0&2942&2820&0.5&0.0&0/1&0&4513\\
+0.6&72&11.0&0.0&0/1&5349&4212&1.0&0.0&0/2&0&5569\\
+0.8&96&24.7&0.0&0/0&6706&5604&1.5&0.0&0/3&1832&6625\\
+1.0&120&22.5&0.0&0/0&4724&6996&1.5&0.0&0/3&1138&7681\\
+\hline
+D&4&\multicolumn{5}{c}{Univarié}&\multicolumn{5}{c}{Multivarié}\\\hline
+Gamma&Nb Clusters&Solve time&Gap(\%)&Train/test&Node count&Nb constraints&Solve time&Gap(\%)&Train/test&Node count& nb constraints\\
+0.0&2&0.0&0.0&59/16&0&320&0.6&0.0&59/16&0&5329\\
+0.2&24&1.9&0.0&0/0&1447&3004&0.8&0.0&0/2&0&7353\\
+0.4&48&5.0&0.0&0/2&2655&5932&1.5&0.0&0/2&72&9561\\
+0.6&72&31.8&0.0&0/2&8788&8860&2.2&0.0&0/2&0&11769\\
+0.8&96&30.7&0.0&0/0&3923&11788&4.9&0.0&0/1&2656&13977\\
+1.0&120&51.4&0.0&0/0&5212&14716&7.1&0.0&0/0&6195&16185\\
+\end{tabular}
